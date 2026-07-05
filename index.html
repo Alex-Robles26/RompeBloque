@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Brick Blast</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <div class="hud">
+    <div class="brand">
+      <div class="b1">BRICK BLAST</div>
+      <div class="b2">MVC ARCADE ED.</div>
+    </div>
+    <div class="stat-group">
+      <div class="stat">
+        <div class="label">NIVEL</div>
+        <div class="value" id="levelVal">1</div>
+      </div>
+      <div class="stat">
+        <div class="label">PUNTOS</div>
+        <div class="value" id="scoreVal">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">VIDAS</div>
+        <div class="value" id="livesVal">3</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="stage">
+    <canvas id="gameCanvas"></canvas>
+
+    <div class="overlay" id="startOverlay">
+      <h1>BRICK BLAST</h1>
+      <p>Mueve la pala con el <span class="accent">ratón</span>, las <span class="accent">flechas</span> o el <span class="accent">dedo</span>. Rompe todos los ladrillos sin dejar caer la bola.</p>
+      <button class="btn" id="startBtn">TOCA PARA JUGAR</button>
+    </div>
+
+    <div class="overlay hidden" id="pauseOverlay">
+      <h1 style="font-size:28px;">PAUSA</h1>
+      <button class="btn" id="resumeBtn">CONTINUAR</button>
+    </div>
+
+    <div class="overlay hidden" id="loseOverlay">
+      <h1 style="font-size:28px;">GAME OVER</h1>
+      <p>Puntuación final: <span class="accent" id="finalScore">0</span></p>
+      <button class="btn" id="retryBtn">REINTENTAR</button>
+    </div>
+
+    <div class="overlay hidden" id="winOverlay">
+      <h1 style="font-size:28px;">¡NIVEL SUPERADO!</h1>
+      <p>Puntuación: <span class="accent" id="winScore">0</span></p>
+      <button class="btn" id="nextBtn">SIGUIENTE NIVEL</button>
+    </div>
+  </div>
+
+  <div id="touchControls">
+    <div class="padZone" id="leftZone">◀ IZQUIERDA</div>
+    <div id="pauseBtn">❚❚</div>
+    <div class="padZone" id="rightZone">DERECHA ▶</div>
+  </div>
+
+</div>
+
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

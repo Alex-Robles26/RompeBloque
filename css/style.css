@@ -1,0 +1,132 @@
+:root{
+  --bg-void: #0a0d1a;
+  --bg-panel: #10152b;
+  --cyan: #00f0ff;
+  --magenta: #ff2e8b;
+  --amber: #ffb800;
+  --ink: #e8ecfb;
+  --ink-dim: #7a84ad;
+  --line: #232a4d;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
+html,body{
+  margin:0; padding:0; height:100%;
+  background: radial-gradient(circle at 50% 0%, #131a35 0%, var(--bg-void) 60%);
+  font-family: 'Courier New', monospace;
+  color: var(--ink);
+  overflow:hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  user-select: none;
+}
+#app{
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  height:100%; width:100%; padding: 10px; gap: 8px;
+}
+
+/* ---------- HUD ---------- */
+.hud{
+  width:100%; max-width: 640px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, var(--bg-panel), #0c1023);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  flex-shrink:0;
+}
+.brand{
+  display:flex; flex-direction:column; line-height:1;
+}
+.brand .b1{
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight:900; letter-spacing: 3px;
+  font-size: 18px;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.brand .b2{ font-size:9px; color:var(--ink-dim); letter-spacing:2px; margin-top:2px;}
+.stat-group{ display:flex; gap:18px; }
+.stat{ text-align:right; }
+.stat .label{ font-size:9px; color:var(--ink-dim); letter-spacing:1px; }
+.stat .value{ font-size:18px; font-weight:bold; color:var(--amber); font-variant-numeric: tabular-nums;}
+#livesVal{ color: var(--magenta); }
+
+/* ---------- Game stage ---------- */
+#stage{
+  position:relative;
+  width:100%; max-width: 640px;
+  flex: 1 1 auto;
+  min-height: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #060812;
+  overflow:hidden;
+  box-shadow: 0 0 0 1px rgba(0,240,255,0.05), 0 20px 60px -20px rgba(0,0,0,0.8);
+}
+canvas{
+  display:block; width:100%; height:100%;
+  touch-action:none;
+}
+
+.overlay{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background: rgba(6,8,18,0.86);
+  backdrop-filter: blur(2px);
+  gap: 14px;
+  text-align:center;
+  padding: 20px;
+}
+.overlay.hidden{ display:none; }
+.overlay h1{
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: clamp(28px, 8vw, 42px);
+  margin:0;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, var(--cyan), var(--magenta));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 0 30px rgba(0,240,255,0.25);
+}
+.overlay p{ margin:0; color: var(--ink-dim); font-size: 13px; max-width: 320px; line-height:1.6;}
+.overlay .accent{ color: var(--amber); }
+.btn{
+  font-family: inherit;
+  font-weight:bold;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 1px solid var(--cyan);
+  background: rgba(0,240,255,0.08);
+  color: var(--cyan);
+  cursor:pointer;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.btn:active{ transform: scale(0.96); background: rgba(0,240,255,0.2); }
+.btn.secondary{ border-color: var(--line); color: var(--ink-dim); font-size:11px; padding:8px 18px;}
+
+/* ---------- touch controls ---------- */
+#touchControls{
+  width:100%; max-width:640px;
+  display:flex; justify-content:space-between; align-items:center;
+  gap:10px; flex-shrink:0;
+}
+.padZone{
+  flex:1; height:56px;
+  border:1px solid var(--line); border-radius:10px;
+  background: var(--bg-panel);
+  display:flex; align-items:center; justify-content:center;
+  font-size:11px; color:var(--ink-dim); letter-spacing:2px;
+}
+.padZone:active{ background:#161d3c; }
+#pauseBtn{
+  width:56px; height:56px; flex:none;
+  border:1px solid var(--line); border-radius:10px;
+  background: var(--bg-panel); color:var(--ink);
+  font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+
+@media (min-width:720px){
+  #touchControls{ display:none; }
+}
+.hint{ font-size:10px; color:var(--ink-dim); letter-spacing:1px; margin-top:2px; }
